@@ -68,8 +68,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
             cell.thumbnail.image = UIImage(imageLiteralResourceName: "Noimage")
         }
         cell.bookTitle.text = book.volumeInfo.title
-        cell.descript.text = book.searchInfo?.textSnippet ??
-            "Opps. There is currently no short description available"
+        cell.descript.text = String(removeHTMLTags(str: book.searchInfo?.textSnippet ?? "Opps. There is currently no short description available").characters)
         return cell
     }
     
@@ -83,5 +82,17 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 350
     }
-
+    
+    // MARK: helper function to remove HTML tags
+    // Source Code: https://www.appsloveworld.com/swift/100/426/how-to-remove-html-tags-from-received-json-data-that-is-shown-in-swiftuis-list-v
+    func removeHTMLTags(str: String) -> AttributedString {
+        if let theData = str.data(using: .utf16) {
+            do {
+                let theString = try NSAttributedString(data: theData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                return AttributedString(theString)
+            } catch {  print("\(error)")  }
+        }
+        return AttributedString(str)
+    }
+    
 }

@@ -44,17 +44,21 @@ class BookDetailsViewController: UIViewController {
 extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     // MARK: code for each cell and row
     
     func tableView(_ bookDetailTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 2:
-            return 1
-        default:
+        case 0:
             return 2
+        case 1:
+            return book.volumeInfo.authors?.count ?? 1
+        case 2:
+            return book.volumeInfo.categories?.count ?? 1
+        default:
+            return 1
         }
     }
     
@@ -64,32 +68,49 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = UITableViewCell(style: .default, reuseIdentifier: "book")
         // makes sure this cells can no longer be clicked
         cell.selectionStyle = .none
-        // makes sure
+        // makes sure text doesn't overflow if not enough lines
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         
-        switch indexPath {
-        case[0, 0]:
-            cell.textLabel?.text = book.volumeInfo.title
-            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
-        case[0,1]:
-            let coverCell = CoverTableViewCell(reuseIdentifier: "coverCell")
-            if let safeURL = URL(string: book.volumeInfo.imageLinks.thumbnail) {
-                coverCell.loadImage(url: safeURL)
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                cell.textLabel?.text = book.volumeInfo.title
+                cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
             }
             else {
-                coverCell.coverImageView.image = UIImage(imageLiteralResourceName: "Noimage")
+                let coverCell = CoverTableViewCell(reuseIdentifier: "coverCell")
+                // makes sure cover image link exists
+                let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
+                if (safeURL != "") {
+                    coverCell.loadImage(url: URL(string: safeURL)!)
+                }
+                else {
+                    coverCell.coverImageView.image = UIImage(imageLiteralResourceName: "Noimage")
+                }
+                coverCell.selectionStyle = .none
+                return coverCell
             }
-            coverCell.selectionStyle = .none
-            return coverCell
-        case[1,0]:
-            cell.textLabel?.text = book.volumeInfo.authors![0]
-        case[1,1]:
-            cell.textLabel?.text = book.volumeInfo.categories![0]
-        case[2,0]:
-            cell.textLabel?.text = book.volumeInfo.description
-        default:
-            break
+        }
+        else if (indexPath.section == 1) {
+            // make sure authors exist
+            if (book.volumeInfo.authors?.count == nil) {
+                cell.textLabel?.text = "Unknown"
+            }
+            else {
+                cell.textLabel?.text = book.volumeInfo.authors?[indexPath.row]
+            }
+        }
+        else if (indexPath.section == 2) {
+            // make sure categories exist
+            if (book.volumeInfo.categories?.count == nil) {
+                cell.textLabel?.text = "Unknown"
+            }
+            else {
+                cell.textLabel?.text = book.volumeInfo.categories?[indexPath.row]
+            }
+        }
+        else {
+            cell.textLabel?.text = book.volumeInfo.description ?? "No description available"
         }
         return cell
     }
@@ -105,4 +126,17 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
+    // MARK: header of each section
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (section == 1) {
+            return "Authors"
+        }
+        if (section == 2) {
+            return "Genre"
+        }
+        if (section == 3) {
+            return "Description"
+        }
+        return nil
+    }
 }

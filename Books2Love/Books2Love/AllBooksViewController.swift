@@ -59,14 +59,17 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AllBooksTableView.dequeueReusableCell(withIdentifier: bookCell, for: indexPath) as! BooksTableViewCell
         let book = books[indexPath.row]
-        if let safeURL = URL(string: book.volumeInfo.imageLinks.thumbnail) {
-            cell.thumbnail.loadImage(url: safeURL)
+        // makes sure an image cover link exists
+        let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
+        if (safeURL != "") {
+            cell.thumbnail.loadImage(url: URL(string: safeURL)!)
         }
         else {
             cell.thumbnail.image = UIImage(imageLiteralResourceName: "Noimage")
         }
         cell.bookTitle.text = book.volumeInfo.title
-        cell.descript.text = book.searchInfo.textSnippet
+        cell.descript.text = book.searchInfo?.textSnippet ??
+            "Opps. There is currently no short description available"
         return cell
     }
     

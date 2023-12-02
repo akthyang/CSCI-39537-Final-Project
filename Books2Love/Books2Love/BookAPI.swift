@@ -19,7 +19,7 @@ struct BooksAPI {
     
     // MARK: gets a list of popular Young Adult Books from Google Books
     func popularBooksWest() async throws -> [Book] {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=most+popular+young+adult+novels+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=bestseller+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
         
@@ -45,15 +45,15 @@ struct BooksAPI {
 // Adapted from: https://stackoverflow.com/questions/70645037/no-value-associated-with-key-codingkeys-error
 struct Book: Codable {
     let volumeInfo: VolumeInfo
-    let searchInfo: SearchInfo
+    let searchInfo: SearchInfo?
 }
 
 struct VolumeInfo: Codable {
     let title: String
     let authors: [String]?
-    let description: String
+    let description: String?
     let categories: [String]?
-    let imageLinks: ImageLinks
+    let imageLinks: ImageLinks?
 }
 
 struct SearchInfo: Codable {
@@ -65,7 +65,6 @@ struct ImageLinks: Codable {
 }
 
 struct GoogleBookResponse: Codable {
-    let kind: String
     let items: [Book]
 }
 

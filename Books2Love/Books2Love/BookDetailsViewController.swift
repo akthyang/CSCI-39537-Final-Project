@@ -73,7 +73,15 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             cell.textLabel?.text = book.volumeInfo.title
             cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         case[0,1]:
-            break
+            let coverCell = CoverTableViewCell(reuseIdentifier: "coverCell")
+            if let safeURL = URL(string: book.volumeInfo.imageLinks.thumbnail) {
+                coverCell.loadImage(url: safeURL)
+            }
+            else {
+                coverCell.coverImageView.image = UIImage(imageLiteralResourceName: "Noimage")
+            }
+            coverCell.selectionStyle = .none
+            return coverCell
         case[1,0]:
             cell.textLabel?.text = book.volumeInfo.authors![0]
         case[1,1]:

@@ -21,6 +21,7 @@
 		01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */; };
 		01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */; };
 		01DEFCC52B1BBA370099DDB1 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */; };
+		01DEFCC72B1BBC980099DDB1 /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 		01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
+		01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
 				01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */,
 				01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */,
+				01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */,
 				0134AE382B1BA558008AFFFF /* Main.storyboard */,
 				0134AE3B2B1BA561008AFFFF /* Assets.xcassets */,
 				0134AE3D2B1BA561008AFFFF /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 				01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,
 				0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */,
+				01DEFCC72B1BBC980099DDB1 /* CoverTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

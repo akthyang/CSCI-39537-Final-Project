@@ -69,3 +69,8 @@ struct GoogleBookResponse: Codable {
     let items: [Book]
 }
 
+// MARK: Errors
+
+enum BookAPIError: Error {
+    case requestFailed(message: String)
+}

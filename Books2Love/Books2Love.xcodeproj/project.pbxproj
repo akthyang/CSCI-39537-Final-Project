@@ -17,6 +17,9 @@
 		0134AE542B1BA561008AFFFF /* Books2LoveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */; };
 		0134AE562B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */; };
 		01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */; };
+		01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */; };
+		01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */; };
+		01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITests.swift; sourceTree = "<group>"; };
 		0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
+		01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksViewController.swift; sourceTree = "<group>"; };
+		01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
+		01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,9 @@
 				0134AE342B1BA558008AFFFF /* SceneDelegate.swift */,
 				01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */,
 				0134AE362B1BA558008AFFFF /* ViewController.swift */,
+				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
+				01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */,
+				01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */,
 				0134AE382B1BA558008AFFFF /* Main.storyboard */,
 				0134AE3B2B1BA561008AFFFF /* Assets.xcassets */,
 				0134AE3D2B1BA561008AFFFF /* LaunchScreen.storyboard */,
@@ -261,8 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */,
 				0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */,
+				01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */,
 				01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */,
+				01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,
 				0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */,
 			);

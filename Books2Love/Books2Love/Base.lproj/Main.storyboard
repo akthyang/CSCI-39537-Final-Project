@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="2170" y="-228"/>
         </scene>
-        <!--View Controller-->
+        <!--All Books View Controller-->
         <scene sceneID="d0L-xp-J6p">
             <objects>
-                <viewController id="BCC-1K-PSQ" sceneMemberID="viewController">
+                <viewController id="BCC-1K-PSQ" customClass="AllBooksViewController" customModule="Books2Love" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lwM-xO-zFh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

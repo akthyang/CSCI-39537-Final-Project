@@ -3,7 +3,7 @@
 //  Books2Love
 //  Source Code: From the book
 //
-//  Created by Alicia Yang on 11/14/23.
+//  Created by Alicia Yang on 11/20/23.
 //  MARK: Loads image from url
 
 import UIKit

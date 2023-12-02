@@ -2,7 +2,7 @@
 //  BookAPI.swift
 //  Books2Love
 //
-//  Created by Alicia Yang on 12/2/23.
+//  Created by Alicia Yang on 11/20/23.
 //  Calls the Google Books API and returns books and lightnovels
 
 import Foundation

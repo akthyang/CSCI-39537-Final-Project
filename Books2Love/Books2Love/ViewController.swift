@@ -62,7 +62,19 @@ class ViewController: UIViewController {
         // changes the title to the emotion of button
         button.setTitle(titleString, for: .highlighted)
         button.setTitleColor(.white, for: .highlighted)
+        // changes view controller to book of day when clicked on
+        button.addTarget(self, action: #selector(recommend), for: UIControl.Event.touchUpInside)
         return button
+    }
+    
+    // changes the root view controller when button is pressed
+    @objc func recommend(sender: UIButton!) {
+        // used to determine what genre of book to recommend
+        UserDefaults.standard.setValue(sender.titleLabel?.text, forKey: "TodaysFeeling")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let TabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+        // changes the root view controller to Book of Day Page
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(TabBarController)
     }
 
 }

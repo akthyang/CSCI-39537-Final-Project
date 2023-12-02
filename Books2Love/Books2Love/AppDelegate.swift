@@ -10,10 +10,15 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // allows the tab bar views to start up, so waiting for API call will not take too long
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let TabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+        let booksViewController = TabBarController.viewControllers?[0]
+        let LNViewController = TabBarController.viewControllers?[2]
+        booksViewController?.loadView()
+        LNViewController?.loadView()
         return true
     }
 
@@ -30,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
 
 }
 

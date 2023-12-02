@@ -4,6 +4,11 @@
 //
 //  Created by Alicia Yang on 12/2/23.
 //
+//  Image Sources
+//  Happy: https://www.pinterest.com/pin/739857045031359757/
+//  Sad: https://www.freepik.com/premium-vector/sticker-bunny-that-has-sad-face_40101114.htm
+//  Bored: https://www.redbubble.com/i/sticker/a-bored-white-cat-studying-anime-by-unepommedeterre/145507941.EJUG5
+// Sleepy: https://www.freepik.com/free-vector/cute-cat-sleeping-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-flat_26445551.htm#query=sleepy%20cat%20animated&position=4&from_view=search&track=ais&uuid=289834cd-34b0-4394-8f12-c541b592fda3
 
 import UIKit
 

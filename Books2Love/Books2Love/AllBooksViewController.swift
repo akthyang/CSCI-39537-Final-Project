@@ -9,8 +9,9 @@ import UIKit
 
 class AllBooksViewController: UIViewController {
 
-    let bookCell = "bookCell"
+    let bookSections = ["Popular Young Adult Books", "Lightnovels"]
     var books = [Book]()
+    var lightnovels = [Book]()
     
     lazy var AllBooksTableView: UITableView = {
         let AllBooksTableView = UITableView()
@@ -30,6 +31,8 @@ class AllBooksViewController: UIViewController {
             do {
                 let books = try await BooksAPI.shared.popularBooksWest()
                 self.books = books
+                let lightnovels = try await BooksAPI.shared.lightNovels()
+                self.lightnovels = lightnovels
                 AllBooksTableView.reloadData()
             }
             catch {
@@ -49,6 +52,10 @@ class AllBooksViewController: UIViewController {
 // MARK: TableView Delegate and Data Source
 extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return bookSections.count
+    }
+    
     // MARK: Code for each cell
     
     func tableView(_ AllBooksTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,8 +63,12 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = BooksTableViewCell(style: .default, reuseIdentifier: bookCell)
-        let book = books[indexPath.row]
+        let cell = BooksTableViewCell(style: .default, reuseIdentifier: "bookCell")
+        var book = books[indexPath.row]
+        // changes value of book if section changes
+        if (indexPath.section == 1) {
+            book = lightnovels[indexPath.row]
+        }
         // makes sure an image cover link exists
         let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
         if (safeURL != "") {
@@ -73,7 +84,10 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: changes view when a cell is selected to display the book's details
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let book = books[indexPath.row]
+        var book = books[indexPath.row]
+        if (indexPath.section == 1) {
+            book = lightnovels[indexPath.row]
+        }
         let detailsViewCountroller = BookDetailsViewController(book: book)
         navigationController?.pushViewController(detailsViewCountroller, animated: true)
     }

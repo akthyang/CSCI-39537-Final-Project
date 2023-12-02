@@ -10,6 +10,14 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: restrict rotation for the screen
+    // Source Code: https://copyprogramming.com/howto/ios-how-to-enable-and-disable-rotation-on-each-uiviewcontroller
+    var restrictRotation:UIInterfaceOrientationMask = .portrait
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.restrictRotation
+    }
+    
     // MARK: tries to make the tabs of tabbar load faster
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

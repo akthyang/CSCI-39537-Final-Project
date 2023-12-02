@@ -77,6 +77,7 @@ class ViewController: UIViewController {
         // changes the root view controller to Book of Day Page
         TabBarController.selectedIndex = 1
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(TabBarController)
+        (UIApplication.shared.delegate as! AppDelegate).restrictRotation = .all
     }
 
 }

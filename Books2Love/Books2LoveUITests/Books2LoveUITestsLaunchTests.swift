@@ -2,7 +2,7 @@
 //  Books2LoveUITestsLaunchTests.swift
 //  Books2LoveUITests
 //
-//  Created by Christine Yang on 12/2/23.
+//  Created by Alicia Yang on 11/20/23.
 //
 
 import XCTest

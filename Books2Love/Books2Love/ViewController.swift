@@ -74,6 +74,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let TabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! UITabBarController
         // changes the root view controller to Book of Day Page
+        TabBarController.selectedIndex = 1
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(TabBarController)
     }
 

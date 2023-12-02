@@ -16,7 +16,6 @@ class AllBooksViewController: UIViewController {
         let AllBooksTableView = UITableView()
         AllBooksTableView.dataSource = self
         AllBooksTableView.delegate = self
-        AllBooksTableView.register(BooksTableViewCell.self, forCellReuseIdentifier: bookCell)
         return AllBooksTableView
     }()
 
@@ -57,7 +56,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = AllBooksTableView.dequeueReusableCell(withIdentifier: bookCell, for: indexPath) as! BooksTableViewCell
+        let cell = BooksTableViewCell(style: .default, reuseIdentifier: bookCell)
         let book = books[indexPath.row]
         // makes sure an image cover link exists
         let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""

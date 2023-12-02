@@ -40,6 +40,7 @@ class BookDetailsViewController: UIViewController {
 
 }
 
+// MARK: TableView Delegate and Data Source
 extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Books2Love
 //
-//  Created by Christine Yang on 12/2/23.
+//  Created by Alicia Yang on 12/2/23.
 //
 
 import UIKit

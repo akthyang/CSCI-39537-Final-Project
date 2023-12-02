@@ -16,6 +16,7 @@
 		0134AE4A2B1BA561008AFFFF /* Books2LoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE492B1BA561008AFFFF /* Books2LoveTests.swift */; };
 		0134AE542B1BA561008AFFFF /* Books2LoveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */; };
 		0134AE562B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */; };
+		01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		0134AE4F2B1BA561008AFFFF /* Books2LoveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Books2LoveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITests.swift; sourceTree = "<group>"; };
 		0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				0134AE322B1BA558008AFFFF /* AppDelegate.swift */,
 				0134AE342B1BA558008AFFFF /* SceneDelegate.swift */,
+				01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */,
 				0134AE362B1BA558008AFFFF /* ViewController.swift */,
 				0134AE382B1BA558008AFFFF /* Main.storyboard */,
 				0134AE3B2B1BA561008AFFFF /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */,
+				01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,
 				0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */,
 			);

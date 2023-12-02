@@ -3,7 +3,7 @@
 //  Books2Love
 //
 //  Created by Alicia Yang on 11/20/23.
-//  Displays a list of books and lightnovels
+//  MARK: Displays a list of books and lightnovels
 
 import UIKit
 

@@ -3,6 +3,7 @@
 //  Books2Love
 //
 //  Created by Alicia Yang on 11/20/23.
+//  MARK: allows user to select a certain emotion for the day
 //
 //  Image Sources
 //  Happy: https://www.pinterest.com/pin/739857045031359757/

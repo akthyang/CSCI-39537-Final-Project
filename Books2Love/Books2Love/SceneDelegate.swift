@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    // MARK: checks which view controller to show when app launches depending on value of TodayFeeling
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -32,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    // helper function to change the rootviewcontroller
+    // MARK: Helper function to change the rootviewcontroller
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else {
             return

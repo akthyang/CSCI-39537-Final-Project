@@ -14,7 +14,7 @@ class BoDViewController: UIViewController {
     
     let feeling = UserDefaults.standard.value(forKey: "TodaysFeeling") as! String
     let genrePicker = Int.random(in: 0..<2)
-    let genreBored = ["action","thriller"]
+    let genreBored = ["adventure","thriller"]
     let genreSad = ["humor", "fantasy"]
     let genreHappy = ["romance", "mystery"]
     

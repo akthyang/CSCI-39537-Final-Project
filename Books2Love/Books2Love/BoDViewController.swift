@@ -55,7 +55,8 @@ class BoDViewController: UIViewController {
                 heading = "A book full of \(recommendationGenre) will definitely make you laugh!"
             }
             else {
-                heading = "Let's read a \(recommendationGenre), it'll definitely make you forget your sadness"
+                heading = 
+                "Let's read a \(recommendationGenre), you'll be too immersed to remember your upset"
             }
         }
         else {

@@ -48,9 +48,10 @@ struct BooksAPI {
         let books = items.items
         let itemsCount = books.count
         var randomInt = Int.random(in: 0..<itemsCount)
-        // make sure description is not empty
-        while (books[randomInt].volumeInfo.description == nil) {
-            randomInt = Int.random(in: 1..<10)
+        // avoid books that do not have an image or a description
+        while (books[randomInt].volumeInfo.description == nil
+               || books[randomInt].volumeInfo.imageLinks == nil) {
+            randomInt = Int.random(in: 0..<itemsCount)
         }
         print(randomInt)
         let recommendation = books[randomInt]

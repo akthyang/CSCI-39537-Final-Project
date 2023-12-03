@@ -75,7 +75,7 @@ class BooksTableViewCell: UITableViewCell {
         descript.frame = CGRect(x: 10,
                                 y: Int(thumbnail.frame.height) + Int(bookTitle.frame.height) + 10,
                                 width: Int(contentView.frame.width) - 15,
-                                height: Int(contentView.frame.height) - Int(thumbnail.frame.height) - Int(bookTitle.frame.height))
+                                height: Int(contentView.frame.height) - Int(thumbnail.frame.height) - Int(bookTitle.frame.height) - 10)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

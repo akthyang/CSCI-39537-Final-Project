@@ -33,7 +33,6 @@ struct BooksAPI {
     
     // MARK: recommends a book based on genre
     func recommendBook(genre: String) async throws -> Book {
-        print(genre)
         var items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=subject:\(genre)+books+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
         // make sure api returns a list of values other than nil
         if (items.totalItems == 0 || items.items == nil) {
@@ -47,9 +46,16 @@ struct BooksAPI {
                || books![randomInt].volumeInfo.imageLinks == nil) {
             randomInt = Int.random(in: 0..<books!.count)
         }
-        print(randomInt)
         let recommendation = books![randomInt]
         return recommendation
+    }
+    
+    // MARK: recommends a book based on genre
+    func search(keyword: String) async throws -> [Book] {
+        var items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=\(keyword)+books+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
+        // books should have a value b/c no filter is happening
+        let books = items.items!
+        return books
     }
     
     // MARK: helper function to call Google Books API

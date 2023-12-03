@@ -58,7 +58,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AllBooksTableView.dequeueReusableCell(withIdentifier: bookCell, for: indexPath) as! BooksTableViewCell
-        var book = books[indexPath.row]
+        let book = books[indexPath.row]
         if let safeURL = URL(string: book.volumeInfo.imageLinks.thumbnail) {
             cell.thumbnail.loadImage(url: safeURL)
         }

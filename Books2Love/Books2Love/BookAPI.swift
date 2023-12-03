@@ -19,7 +19,7 @@ struct BooksAPI {
     
     // MARK: gets a list of popular Young Adult Books from Google Books
     func popularBooksWest() async throws -> [Book] {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=bestseller+YA+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=bestseller+YA+2023")!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
         
@@ -30,7 +30,7 @@ struct BooksAPI {
     
     // MARK: gets 10 lightnovels from Google Books
     func lightNovels() async throws -> [Book] {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=light+novels+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=light+novels+2023")!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
         

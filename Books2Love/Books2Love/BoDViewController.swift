@@ -22,6 +22,7 @@ class BoDViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        title = "Book of the Day"
         Task {
             do {
                 // gets the recommended book

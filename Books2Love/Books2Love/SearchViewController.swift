@@ -31,6 +31,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         title = "Search"
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Enter a keyword: "
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -42,7 +43,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 self.keyword = keyword
                 let books = try await BooksAPI.shared.search(keyword: keyword)
                 self.books = books
-                lightnovels = books
                 resultsTable.reloadData()
             }
             catch {
@@ -61,13 +61,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let heading = UILabel()
         heading.textColor = .black
-        heading.text = sections[section]
         heading.textAlignment = .center
         heading.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
         heading.font = .systemFont(ofSize: 25)
         heading.numberOfLines = 0
         heading.lineBreakMode = .byWordWrapping
-        return heading
+        if (section == 0 && books.count > 0) {
+            heading.text = sections[section]
+            return heading
+        }
+        else if (section == 1 && lightnovels.count > 0) {
+            heading.text = sections[section]
+            return heading
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -81,7 +88,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Code for each cell
     
     func tableView(_ AllBooksTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        if (section == 0) {
+            return books.count
+        }
+        return lightnovels.count
     }
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,7 +100,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.lineBreakMode = .byWordWrapping
         var book = books[indexPath.row]
         // changes value of book if section changes
-        if (indexPath.section == 1) {
+        if (indexPath.section == 1 && lightnovels.count > 0) {
             book = lightnovels[indexPath.row]
         }
         cell.textLabel?.text = book.volumeInfo.title
@@ -101,7 +111,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: changes view when a cell is selected to display the book's details
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var book = books[indexPath.row]
-        if (indexPath.section == 1) {
+        if (indexPath.section == 1 && lightnovels.count > 0) {
             book = lightnovels[indexPath.row]
         }
         let detailsViewCountroller = BookDetailsViewController(book: book)

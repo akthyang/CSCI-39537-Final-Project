@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="2169" y="568"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="qxM-8T-tJY">
             <objects>
-                <viewController id="kqN-fQ-1nV" sceneMemberID="viewController">
+                <viewController id="kqN-fQ-1nV" customClass="SearchViewController" customModule="Books2Love" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Fy-DN-gv5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

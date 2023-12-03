@@ -23,6 +23,7 @@
 		01DEFCC52B1BBA370099DDB1 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */; };
 		01DEFCC72B1BBC980099DDB1 /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */; };
 		01F6D3292B1C0CB2008B1AD2 /* BoDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */; };
+		01F6D32B2B1C24F9008B1AD2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
 		01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoDViewController.swift; sourceTree = "<group>"; };
+		01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */,
 				01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */,
 				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
+				01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */,
 				01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */,
 				01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */,
 				01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */,
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */,
+				01F6D32B2B1C24F9008B1AD2 /* SearchViewController.swift in Sources */,
 				0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */,
 				01DEFCC52B1BBA370099DDB1 /* BookDetailsViewController.swift in Sources */,
 				01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */,

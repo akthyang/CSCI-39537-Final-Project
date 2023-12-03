@@ -81,8 +81,8 @@
             <objects>
                 <navigationController id="mCd-nF-nEW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Nzm-i1-SLi"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HMJ-yh-jnZ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="HMJ-yh-jnZ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -114,8 +114,8 @@
             <objects>
                 <navigationController id="1qa-t6-bKG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Ltd-4C-bFz"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gCZ-0T-g6K">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gCZ-0T-g6K">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -19,43 +19,46 @@ struct BooksAPI {
     
     // MARK: gets a list of popular Young Adult Books from Google Books
     func popularBooksWest() async throws -> [Book] {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=bestseller+YA+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
-        let urlRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: urlRequest)
-        
-        let items = try JSONDecoder().decode(GoogleBookResponse.self, from: data)
-        let bookInfo = items.items
+        let items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=bestseller+YA+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
+        let bookInfo = items.items!
         return bookInfo
     }
     
     // MARK: gets 10 lightnovels from Google Books
     func lightNovels() async throws -> [Book] {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=light+novels+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
-        let urlRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: urlRequest)
-        
-        let items = try JSONDecoder().decode(GoogleBookResponse.self, from: data)
-        let bookInfo = items.items
+        let items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=light+novels+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
+        let bookInfo = items.items!
         return bookInfo
     }
     
     // MARK: recommends a book based on genre
     func recommendBook(genre: String) async throws -> Book {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=subject:\(genre)+books+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")!
+        print(genre)
+        var items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=subject:\(genre)+books+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
+        // make sure api returns a list of values other than nil
+        if (items.totalItems == 0 || items.items == nil) {
+            items = try await callGoogleBooksAPI(url: "https://www.googleapis.com/books/v1/volumes?q=\(genre)+books+2023&key=AIzaSyDDIitdJ5Puu3-W0mchd8hVbIeGHzPzHxQ")
+        }
+        // at this point books should have a value
+        let books = items.items
+        var randomInt = Int.random(in: 0..<books!.count)
+        // avoid books that do not have an image or a description
+        while (books![randomInt].volumeInfo.description == nil
+               || books![randomInt].volumeInfo.imageLinks == nil) {
+            randomInt = Int.random(in: 0..<books!.count)
+        }
+        print(randomInt)
+        let recommendation = books![randomInt]
+        return recommendation
+    }
+    
+    // MARK: helper function to call Google Books API
+    func callGoogleBooksAPI(url: String) async throws -> GoogleBookResponse {
+        let url = URL(string: url)!
         let urlRequest = URLRequest(url: url)
         let (data, _) = try await urlSession.data(for: urlRequest)
         let items = try JSONDecoder().decode(GoogleBookResponse.self, from: data)
-        let books = items.items
-        let itemsCount = books.count
-        var randomInt = Int.random(in: 0..<itemsCount)
-        // avoid books that do not have an image or a description
-        while (books[randomInt].volumeInfo.description == nil
-               || books[randomInt].volumeInfo.imageLinks == nil) {
-            randomInt = Int.random(in: 0..<itemsCount)
-        }
-        print(randomInt)
-        let recommendation = books[randomInt]
-        return recommendation
+        return items
     }
     
 }
@@ -84,7 +87,8 @@ struct ImageLinks: Codable {
 }
 
 struct GoogleBookResponse: Codable {
-    let items: [Book]
+    let totalItems: Int
+    let items: [Book]?
 }
 
 // MARK: Errors

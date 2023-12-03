@@ -71,10 +71,6 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return bookSections[section]
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return bookSections.count
     }

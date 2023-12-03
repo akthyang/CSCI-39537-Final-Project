@@ -39,6 +39,22 @@ struct BooksAPI {
         return bookInfo
     }
     
+    // MARK: recommends a book based on genre
+    func recommendBook(genre: String) async throws -> Book {
+        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=subject:\(genre)")!
+        let urlRequest = URLRequest(url: url)
+        let (data, _) = try await urlSession.data(for: urlRequest)
+        let items = try JSONDecoder().decode(GoogleBookResponse.self, from: data)
+        let books = items.items
+        var randomInt = Int.random(in: 1..<10)
+        // make sure description is not empty
+        while (books[randomInt].volumeInfo.description == nil) {
+            randomInt = Int.random(in: 1..<10)
+        }
+        let recommendation = books[randomInt]
+        return recommendation
+    }
+    
 }
 
 // format to decode the API response from Google Book's  API

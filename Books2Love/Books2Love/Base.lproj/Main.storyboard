@@ -26,7 +26,7 @@
         <!--Item-->
         <scene sceneID="CLd-Fu-HkQ">
             <objects>
-                <viewController storyboardIdentifier="BoDController" id="4ME-27-t4k" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BoDController" id="4ME-27-t4k" customClass="BoDViewController" customModule="Books2Love" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3ex-rT-IUU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

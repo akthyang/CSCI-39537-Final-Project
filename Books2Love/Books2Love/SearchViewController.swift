@@ -102,13 +102,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             book = lightnovels[indexPath.row]
         }
         cell.bookTitle.text = book.volumeInfo.title
-        cell.authors.text = book.volumeInfo.authors?.first
-        if (book.volumeInfo.authors?.count ?? 0 > 1) {
-            var i = 1
-            while (i < book.volumeInfo.authors?.count ?? 0) {
-                cell.authors.text = cell.authors.text! + ", " + (book.volumeInfo.authors?[i])!
-                i = i + 1
+        // add all the authors if provided
+        if (book.volumeInfo.authors?.count ?? 0 > 0) {
+            cell.authors.text = book.volumeInfo.authors?.first
+            if (book.volumeInfo.authors?.count ?? 0 > 1) {
+                var i = 1
+                while (i < book.volumeInfo.authors?.count ?? 0) {
+                    cell.authors.text = cell.authors.text! + ", " + (book.volumeInfo.authors?[i])!
+                    i = i + 1
+                }
             }
+        }
+        // If there is no author listed
+        else {
+            cell.authors.text = "Unknown"
         }
         
         return cell

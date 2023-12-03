@@ -9,7 +9,7 @@ import UIKit
 
 class AllBooksViewController: UIViewController {
 
-    var bookSections = ["Popular Young Adult Books", "Lightnovels"]
+    let bookSections = ["Popular Young Adult Books", "Lightnovels"]
     var books = [Book]()
     var lightnovels = [Book]()
     

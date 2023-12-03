@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01109DED2B1D0F2F002A8F70 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DEC2B1D0F2E002A8F70 /* SearchTableViewCell.swift */; };
 		0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE322B1BA558008AFFFF /* AppDelegate.swift */; };
 		0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE342B1BA558008AFFFF /* SceneDelegate.swift */; };
 		0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE362B1BA558008AFFFF /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01109DEC2B1D0F2E002A8F70 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		0134AE2F2B1BA558008AFFFF /* Books2Love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books2Love.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0134AE322B1BA558008AFFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0134AE342B1BA558008AFFFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */,
 				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
 				01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */,
+				01109DEC2B1D0F2E002A8F70 /* SearchTableViewCell.swift */,
 				01DEFCC22B1BB5160099DDB1 /* UIImageView+Extension.swift */,
 				01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */,
 				01DEFCC62B1BBC980099DDB1 /* CoverTableViewCell.swift */,
@@ -291,6 +294,7 @@
 				01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,
 				0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */,
+				01109DED2B1D0F2F002A8F70 /* SearchTableViewCell.swift in Sources */,
 				01F6D3292B1C0CB2008B1AD2 /* BoDViewController.swift in Sources */,
 				01DEFCC72B1BBC980099DDB1 /* CoverTableViewCell.swift in Sources */,
 			);

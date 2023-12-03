@@ -56,7 +56,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 // MARK: resultsTable Delegate and Data Source
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: code for the header of each section
+    // MARK: code for each section
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let heading = UILabel()
@@ -85,8 +85,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return sections.count
     }
     
-    // MARK: Code for each cell
-    
     func tableView(_ AllBooksTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return books.count
@@ -94,16 +92,24 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return lightnovels.count
     }
     
+    // MARK: Code for each cell
+    
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "bookCell")
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
+        let cell = SearchTableViewCell(style: .default, reuseIdentifier: "searchCell")
         var book = books[indexPath.row]
         // changes value of book if section changes
         if (indexPath.section == 1 && lightnovels.count > 0) {
             book = lightnovels[indexPath.row]
         }
-        cell.textLabel?.text = book.volumeInfo.title
+        cell.bookTitle.text = book.volumeInfo.title
+        cell.authors.text = book.volumeInfo.authors?.first
+        if (book.volumeInfo.authors?.count ?? 0 > 1) {
+            var i = 1
+            while (i < book.volumeInfo.authors?.count ?? 0) {
+                cell.authors.text = cell.authors.text! + ", " + (book.volumeInfo.authors?[i])!
+                i = i + 1
+            }
+        }
         
         return cell
     }
@@ -119,7 +125,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 100
     }
     
 }

@@ -25,6 +25,7 @@ class AllBooksViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.addSubview(AllBooksTableView)
+        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
         
         // calls the GoogleBook API
         Task {
@@ -51,6 +52,28 @@ class AllBooksViewController: UIViewController {
 
 // MARK: TableView Delegate and Data Source
 extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: code for the header of each section
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let heading = UILabel()
+        heading.textColor = .black
+        heading.text = bookSections[section]
+        heading.textAlignment = .center
+        heading.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
+        heading.font = .systemFont(ofSize: 25)
+        heading.numberOfLines = 0
+        heading.lineBreakMode = .byWordWrapping
+        return heading
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return bookSections[section]
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return bookSections.count
@@ -93,7 +116,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 350
+        return 400
     }
     
     // MARK: helper function to remove HTML tags

@@ -22,9 +22,9 @@ class BooksTableViewCell: UITableViewCell {
     let bookTitle: UILabel = {
         let bookTitle = UILabel()
         bookTitle.textColor = .black
-        bookTitle.numberOfLines = 0
+        bookTitle.numberOfLines = 2
         bookTitle.lineBreakMode = NSLineBreakMode.byWordWrapping
-        bookTitle.font = UIFont.preferredFont(forTextStyle: .title2)
+        bookTitle.font = .systemFont(ofSize: 20, weight: .semibold)
         return bookTitle
     }()
     
@@ -71,7 +71,7 @@ class BooksTableViewCell: UITableViewCell {
         bookTitle.frame = CGRect(x: 10,
                                  y: Int(thumbnail.frame.height) + 10,
                                  width: Int(contentView.frame.width) - 10,
-                                 height: 30)
+                                 height: 50)
         descript.frame = CGRect(x: 10,
                                 y: Int(thumbnail.frame.height) + Int(bookTitle.frame.height) + 10,
                                 width: Int(contentView.frame.width) - 15,

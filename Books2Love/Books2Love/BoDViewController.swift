@@ -13,7 +13,10 @@ class BoDViewController: UIViewController {
     var heading = ""
     
     let feeling = UserDefaults.standard.value(forKey: "TodaysFeeling") as! String
-    let genre = ["adventure","fantasy", "comedy"]
+    let genrePicker = Int.random(in: 0..<2)
+    let genreBored = ["action","thriller"]
+    let genreSad = ["humor", "fantasy"]
+    let genreHappy = ["romance", "mystery"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +27,12 @@ class BoDViewController: UIViewController {
                 // gets the recommended book
                 recommend()
                 let book = try await BooksAPI.shared.recommendBook(genre: recommendationGenre)
-                print(book)
                 
                 // add BookDetailViewController to this ViewController to display recommendation
                 let BookDetailsViewController = BookDetailsViewController(book: book)
                 addChild(BookDetailsViewController)
                 BookDetailsViewController.view.frame =  view.bounds
-                //BookDetailViewController.heading = heading
+                BookDetailsViewController.heading = heading
                 view.addSubview(BookDetailsViewController.view)
                 BookDetailsViewController.didMove(toParent: self)
             }
@@ -40,19 +42,24 @@ class BoDViewController: UIViewController {
         }
     }
     
+    // MARK: helper funtion - changes the recommendationGenre and heading according to feeling
     func recommend() {
-        // calls the api extension recommend
-        if (feeling == "Bored") {
-            recommendationGenre = genre[0]
-            heading = "Let's read an \(recommendationGenre) to blow the boredom away!"
+        if (feeling == "Sleepy") {
+            recommendationGenre = genreBored[genrePicker]
+            heading = "Let's read a \(recommendationGenre) to blow the boredom away!"
         }
         else if (feeling == "Sad") {
-            recommendationGenre = genre[1]
-            heading = "Let's read an \(recommendationGenre) to blow the boredom away!"
+            recommendationGenre = genreSad[genrePicker]
+            if (recommendationGenre == "humor") {
+                heading = "A book full of \(recommendationGenre) will definitely make you laugh!"
+            }
+            else {
+                heading = "Let's read a \(recommendationGenre), it'll definitely make you forget your sadness"
+            }
         }
         else {
-            recommendationGenre = genre[2]
-            heading = "Let's read an \(recommendationGenre) to blow the boredom away!"
+            recommendationGenre = genreHappy[genrePicker]
+            heading = "How about a mood changer? Like reading a \(recommendationGenre)!"
         }
     }
 

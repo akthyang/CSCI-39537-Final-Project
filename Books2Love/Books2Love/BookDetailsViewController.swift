@@ -10,6 +10,7 @@ import UIKit
 class BookDetailsViewController: UIViewController {
 
     private let book: Book
+    var heading: String = ""
 
     lazy var bookDetailTableView: UITableView = {
         let bookDetailTableView = UITableView(frame: .zero, style: .grouped)
@@ -43,11 +44,29 @@ class BookDetailsViewController: UIViewController {
 // MARK: TableView Delegate and Data Source
 extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: header of each section
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // only applies for BoD page
+        if (section == 0 && heading != "") {
+            return heading
+        }
+        else if (section == 1) {
+            return "Authors"
+        }
+        else if (section == 2) {
+            return "Genre/Category"
+        }
+        else if (section == 3) {
+            return "Description"
+        }
+        return nil
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    // MARK: code for each cell and row
+    // MARK: code for each section
     
     func tableView(_ bookDetailTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -61,6 +80,8 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             return 1
         }
     }
+    
+    // MARK: code for each cell and row
     
     func tableView(_ bookDetailTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -125,18 +146,5 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableView.automaticDimension
         }
     }
-    
-    // MARK: header of each section
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (section == 1) {
-            return "Authors"
-        }
-        if (section == 2) {
-            return "Genre"
-        }
-        if (section == 3) {
-            return "Description"
-        }
-        return nil
-    }
+
 }

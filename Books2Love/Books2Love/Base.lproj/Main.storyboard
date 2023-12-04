@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1257" y="4"/>
+            <point key="canvasLocation" x="-1257" y="-228"/>
         </scene>
         <!--Item-->
         <scene sceneID="CLd-Fu-HkQ">
@@ -64,7 +64,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1xE-Zn-LM3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="mCd-nF-nEW" kind="relationship" relationship="viewControllers" id="OkY-IF-N8L"/>
@@ -75,6 +75,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDE-nR-3yH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979" y="4"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="48u-h2-3B9">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" id="ORC-2K-DSD" customClass="LoadingViewController" customModule="Books2Love" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="76V-o2-3Gv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qfF-Dh-o5L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZAg-Cx-qre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1257" y="568"/>
         </scene>
         <!--Item-->
         <scene sceneID="trQ-t9-XbL">
@@ -144,6 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

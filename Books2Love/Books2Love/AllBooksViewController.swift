@@ -28,17 +28,29 @@ class AllBooksViewController: UIViewController {
         view.addSubview(AllBooksTableView)
         view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
         
+        // creates a loading page until table has finished loading
+        let loading = LoadingViewController()
+        navigationController?.pushViewController(loading, animated: false)
+        // removes back button on top
+        navigationController?.isNavigationBarHidden = true
+        
         // calls the GoogleBook API
-        Task {
-            do {
-                let books = try await BooksAPI.shared.popularBooksWest()
-                self.books = books
-                let lightnovels = try await BooksAPI.shared.lightNovels()
-                self.lightnovels = lightnovels
-                AllBooksTableView.reloadData()
-            }
-            catch {
-                print(error)
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    let books = try await BooksAPI.shared.popularBooksWest()
+                    self.books = books
+                    let lightnovels = try await BooksAPI.shared.lightNovels()
+                    self.lightnovels = lightnovels
+                    self.AllBooksTableView.reloadData()
+                    
+                    // removes loading page once table has loaded
+                    self.navigationController?.popViewController(animated: false)
+                    self.navigationController?.isNavigationBarHidden = false
+                }
+                catch {
+                    print(error)
+                }
             }
         }
     }

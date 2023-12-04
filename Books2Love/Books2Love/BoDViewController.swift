@@ -23,22 +23,37 @@ class BoDViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         title = "Book of the Day"
-        Task {
-            do {
-                // gets the recommended book
-                recommend()
-                let book = try await BooksAPI.shared.recommendBook(genre: recommendationGenre)
-                
-                // add BookDetailViewController to this ViewController to display recommendation
-                let BookDetailsViewController = BookDetailsViewController(book: book)
-                addChild(BookDetailsViewController)
-                BookDetailsViewController.view.frame =  view.bounds
-                BookDetailsViewController.heading = heading
-                view.addSubview(BookDetailsViewController.view)
-                BookDetailsViewController.didMove(toParent: self)
-            }
-            catch {
-                print(error)
+        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
+        
+        // creates a loading page until table has finished loading
+        let loading = LoadingViewController()
+        loading.label.text = "Running to get your novel..."
+        navigationController?.pushViewController(loading, animated: false)
+        // removes back button on top
+        navigationController?.isNavigationBarHidden = true
+        
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    // gets the recommended book
+                    self.recommend()
+                    let book = try await BooksAPI.shared.recommendBook(genre: self.recommendationGenre)
+                    
+                    // add BookDetailViewController to this ViewController to display recommendation
+                    let BookDetailsViewController = BookDetailsViewController(book: book)
+                    self.addChild(BookDetailsViewController)
+                    BookDetailsViewController.view.frame =  self.view.bounds
+                    BookDetailsViewController.heading = self.heading
+                    self.view.addSubview(BookDetailsViewController.view)
+                    BookDetailsViewController.didMove(toParent: self)
+                    
+                    // removes loading page once table has loaded
+                    self.navigationController?.popViewController(animated: false)
+                    self.navigationController?.isNavigationBarHidden = false
+                }
+                catch {
+                    print(error)
+                }
             }
         }
     }

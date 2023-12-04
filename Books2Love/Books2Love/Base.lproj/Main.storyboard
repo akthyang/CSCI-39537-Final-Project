@@ -44,7 +44,7 @@
         <scene sceneID="HmX-My-Tlg">
             <objects>
                 <navigationController id="tgk-Z6-PIc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tpW-Ao-P9b"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="book.closed.circle" catalog="system" id="tpW-Ao-P9b"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="rem-AS-4xo">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -95,7 +95,7 @@
         <scene sceneID="trQ-t9-XbL">
             <objects>
                 <navigationController id="mCd-nF-nEW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Nzm-i1-SLi"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="books.vertical" catalog="system" id="Nzm-i1-SLi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="HMJ-yh-jnZ">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,7 +128,7 @@
         <scene sceneID="jV7-Jg-6Yq">
             <objects>
                 <navigationController id="1qa-t6-bKG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Ltd-4C-bFz"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="magnifyingglass.circle" catalog="system" id="Ltd-4C-bFz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gCZ-0T-g6K">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -159,6 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book.closed.circle" catalog="system" width="128" height="123"/>
+        <image name="books.vertical" catalog="system" width="128" height="107"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <systemColor name="quaternarySystemFillColor">
             <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -45,6 +45,7 @@ class BookDetailsViewController: UIViewController {
 extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: header of each section
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // only applies for BoD page
         if (section == 0 && heading != "") {
@@ -57,16 +58,19 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             return "Genre/Category"
         }
         else if (section == 3) {
+            return "Language"
+        }
+        else if (section == 4) {
             return "Description"
         }
         return nil
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
-    }
-    
     // MARK: code for each section
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
     
     func tableView(_ bookDetailTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -129,6 +133,9 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             else {
                 cell.textLabel?.text = book.volumeInfo.categories?[indexPath.row]
             }
+        }
+        else if (indexPath.section == 3) {
+            cell.textLabel?.text = book.volumeInfo.language.capitalized
         }
         else {
             cell.textLabel?.text = book.volumeInfo.description ?? "No description available"

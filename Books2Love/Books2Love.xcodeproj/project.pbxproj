@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		01109DED2B1D0F2F002A8F70 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DEC2B1D0F2E002A8F70 /* SearchTableViewCell.swift */; };
 		01109DF72B1D3E82002A8F70 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DF62B1D3E82002A8F70 /* LoadingViewController.swift */; };
+		01109DFF2B1ED8DD002A8F70 /* MangaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */; };
+		01109E012B1ED8F8002A8F70 /* MangaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */; };
 		0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE322B1BA558008AFFFF /* AppDelegate.swift */; };
 		0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE342B1BA558008AFFFF /* SceneDelegate.swift */; };
 		0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE362B1BA558008AFFFF /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		01109DEC2B1D0F2E002A8F70 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		01109DF62B1D3E82002A8F70 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaAPI.swift; sourceTree = "<group>"; };
+		01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDetailsViewController.swift; sourceTree = "<group>"; };
 		0134AE2F2B1BA558008AFFFF /* Books2Love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books2Love.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0134AE322B1BA558008AFFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0134AE342B1BA558008AFFFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,8 +126,10 @@
 				0134AE322B1BA558008AFFFF /* AppDelegate.swift */,
 				0134AE342B1BA558008AFFFF /* SceneDelegate.swift */,
 				01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */,
+				01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */,
 				0134AE362B1BA558008AFFFF /* ViewController.swift */,
 				01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */,
+				01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */,
 				01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */,
 				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
 				01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */,
@@ -288,11 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01109E012B1ED8F8002A8F70 /* MangaDetailsViewController.swift in Sources */,
 				01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */,
 				01F6D32B2B1C24F9008B1AD2 /* SearchViewController.swift in Sources */,
 				0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */,
 				01DEFCC52B1BBA370099DDB1 /* BookDetailsViewController.swift in Sources */,
 				01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */,
+				01109DFF2B1ED8DD002A8F70 /* MangaAPI.swift in Sources */,
 				01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */,
 				01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,

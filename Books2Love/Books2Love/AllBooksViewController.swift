@@ -3,15 +3,16 @@
 //  Books2Love
 //
 //  Created by Alicia Yang on 11/20/23.
-//  MARK: Displays a list of books and lightnovels
+//  MARK: Displays a list of books, lightnovels, and manga
 
 import UIKit
 
 class AllBooksViewController: UIViewController {
 
-    let bookSections = ["Popular Young Adult Books", "Lightnovels"]
+    let bookSections = ["Popular Young Adult Books", "Lightnovels", "Manga"]
     var books = [Book]()
     var lightnovels = [Book]()
+    var manga = [Manga]()
     
     lazy var AllBooksTableView: UITableView = {
         let AllBooksTableView = UITableView()
@@ -42,6 +43,8 @@ class AllBooksViewController: UIViewController {
                     self.books = books
                     let lightnovels = try await BooksAPI.shared.lightNovels()
                     self.lightnovels = lightnovels
+                    let manga = try await MangaAPI.shared.getManga()
+                    self.manga = manga
                     self.AllBooksTableView.reloadData()
                     
                     // removes loading page once table has loaded
@@ -98,30 +101,51 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = BooksTableViewCell(style: .default, reuseIdentifier: "bookCell")
         var book = books[indexPath.row]
         // changes value of book if section changes
-        if (indexPath.section == 1) {
-            book = lightnovels[indexPath.row]
-        }
-        // makes sure an image cover link exists
-        let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
-        if (safeURL != "") {
-            cell.thumbnail.loadImage(url: URL(string: safeURL)!)
+        if (indexPath.section == 0 || indexPath.section == 1) {
+            if (indexPath.section == 1) {
+                book = lightnovels[indexPath.row]
+            }
+            // makes sure an image cover link exists
+            let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
+            if (safeURL != "") {
+                cell.thumbnail.loadImage(url: URL(string: safeURL)!)
+            }
+            else {
+                cell.thumbnail.image = UIImage(imageLiteralResourceName: "Noimage")
+            }
+            cell.bookTitle.text = book.volumeInfo.title
+            cell.descript.text = String(removeHTMLTags(str: book.searchInfo?.textSnippet ?? "Opps. There is currently no short description available").characters)
         }
         else {
-            cell.thumbnail.image = UIImage(imageLiteralResourceName: "Noimage")
+            let manga = manga[indexPath.row]
+            let safeURL = manga.attributes.posterImage.original
+            cell.thumbnail.loadImage(url: URL(string: safeURL)!)
+            cell.bookTitle.text = manga.attributes.canonicalTitle
+            if (manga.attributes.synopsis != nil) {
+                cell.descript.text = manga.attributes.synopsis
+            }
+            else {
+                cell.descript.text = "Opps. There is currently no short description available"
+            }
         }
-        cell.bookTitle.text = book.volumeInfo.title
-        cell.descript.text = String(removeHTMLTags(str: book.searchInfo?.textSnippet ?? "Opps. There is currently no short description available").characters)
         return cell
     }
     
     // MARK: changes view when a cell is selected to display the book's details
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var book = books[indexPath.row]
-        if (indexPath.section == 1) {
-            book = lightnovels[indexPath.row]
+        if (indexPath.section == 0 || indexPath.section == 1) {
+            var book = books[indexPath.row]
+            if (indexPath.section == 1) {
+                book = lightnovels[indexPath.row]
+            }
+            let detailsViewCountroller = BookDetailsViewController(book: book)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
         }
-        let detailsViewCountroller = BookDetailsViewController(book: book)
-        navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        else {
+            let manga = manga[indexPath.row]
+            let detailsViewCountroller = MangaDetailsViewController(manga: manga)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        }
     }
     
     func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

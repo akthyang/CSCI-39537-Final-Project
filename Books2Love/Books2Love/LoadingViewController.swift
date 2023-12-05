@@ -3,7 +3,7 @@
 //  Books2Love
 //
 //  Created by Alicia Yang on 12/3/23.
-//
+//  Creates a loading screen when data is being rendered
 
 import UIKit
 

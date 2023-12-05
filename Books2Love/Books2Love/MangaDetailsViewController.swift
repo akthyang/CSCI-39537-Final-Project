@@ -10,6 +10,8 @@ import UIKit
 class MangaDetailsViewController: UIViewController {
 
     private let manga: Manga
+    
+    // only applicable on Book of Day Page
     var heading: String = ""
 
     lazy var mangaDetailTableView: UITableView = {

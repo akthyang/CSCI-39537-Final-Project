@@ -10,6 +10,8 @@ import UIKit
 class BookDetailsViewController: UIViewController {
 
     private let book: Book
+    
+    // only applicable on Book of Day Page
     var heading: String = ""
 
     lazy var bookDetailTableView: UITableView = {

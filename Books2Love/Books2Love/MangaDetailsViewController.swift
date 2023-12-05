@@ -57,15 +57,18 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return "Also Goes By"
         }
         else if (section == 2) {
-            return "Genre/Category"
+            return "Author/Artist"
         }
         else if (section == 3) {
-            return "Status"
+            return "Genre/Category"
         }
         else if (section == 4) {
-            return "Rating"
+            return "Status"
         }
         else if (section == 5) {
+            return "Rating"
+        }
+        else if (section == 6) {
             return "Description"
         }
         return nil
@@ -74,7 +77,7 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
     // MARK: code for each section
     
     func numberOfSections(in mangaDetailTableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     func tableView(_ mangaDetailTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,6 +97,9 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return ((manga.attributes.abbreviatedTitles?.count ?? 0) + 1)
         }
         else if (section == 2) {
+            return manga.authors?.count ?? 1
+        }
+        else if (section == 3) {
             return manga.genres?.count ?? 1
         }
         return 1
@@ -153,6 +159,14 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         else if (indexPath.section == 2) {
+            if (indexPath.row < manga.authors?.count ?? 0) {
+                cell.textLabel?.text = manga.authors?[indexPath.row]
+            }
+            else {
+                cell.textLabel?.text = "Unknown"
+            }
+        }
+        else if (indexPath.section == 3) {
             if (indexPath.row < manga.genres?.count ?? 0) {
                 cell.textLabel?.text = manga.genres?[indexPath.row]
             }
@@ -160,10 +174,10 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.textLabel?.text = "Unknown"
             }
         }
-        else if (indexPath.section == 3) {
+        else if (indexPath.section == 4) {
             cell.textLabel?.text = manga.attributes.status.capitalized
         }
-        else if (indexPath.section == 4) {
+        else if (indexPath.section == 5) {
             if (manga.attributes.averageRating != nil) {
                 cell.textLabel?.text = manga.attributes.averageRating
             }

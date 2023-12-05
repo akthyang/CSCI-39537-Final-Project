@@ -32,10 +32,10 @@ class BookDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
         view.addSubview(bookDetailTableView)
         bookDetailTableView.frame = view.bounds
 
-        // Do any additional setup after loading the view.
     }
     
 
@@ -46,7 +46,7 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     
     // MARK: header of each section
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ bookDetailTableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // only applies for BoD page
         if (section == 0 && heading != "") {
             return heading
@@ -143,7 +143,7 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ bookDetailTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case[0,1]:
             // default height for cover image

@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         let resultsTable = UITableView()
         resultsTable.dataSource = self
         resultsTable.delegate = self
+        resultsTable.frame = view.bounds
         return resultsTable
     }()
     
@@ -52,10 +53,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                     
                     // removes loading page once table has loaded
                     self.navigationController?.popViewController(animated: false)
-                    self.navigationController?.isNavigationBarHidden = false
+                    self.navigationController?.navigationBar.isHidden = false
                     
-                    // add table to results
-                    self.resultsTable.frame = self.view.bounds
                     self.view.addSubview(self.resultsTable)
                     self.resultsTable.reloadData()
                 }

@@ -28,9 +28,9 @@ class BoDViewController: UIViewController {
         // creates a loading page until table has finished loading
         let loading = LoadingViewController()
         loading.label.text = "Running to get your novel..."
-        navigationController?.pushViewController(loading, animated: false)
+        self.navigationController?.pushViewController(loading, animated: false)
         // removes back button on top
-        navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
         DispatchQueue.main.async {
             Task {

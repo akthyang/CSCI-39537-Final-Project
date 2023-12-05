@@ -36,17 +36,32 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let keyword = searchBar.text, !keyword.isEmpty else { return }
-        Task {
-            do {
-                view.addSubview(resultsTable)
-                resultsTable.frame = view.bounds
-                self.keyword = keyword
-                let books = try await BooksAPI.shared.search(keyword: keyword)
-                self.books = books
-                resultsTable.reloadData()
-            }
-            catch {
-                print(error)
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    self.keyword = keyword
+                    // creates a loading page until table has finished loading
+                    let loading = LoadingViewController()
+                    loading.label.text = "Searching in our database..."
+                    self.navigationController?.pushViewController(loading, animated: false)
+                    // removes back button on top
+                    self.navigationController?.navigationBar.isHidden = true
+                    
+                    let books = try await BooksAPI.shared.search(keyword: keyword)
+                    self.books = books
+                    
+                    // removes loading page once table has loaded
+                    self.navigationController?.popViewController(animated: false)
+                    self.navigationController?.isNavigationBarHidden = false
+                    
+                    // add table to results
+                    self.resultsTable.frame = self.view.bounds
+                    self.view.addSubview(self.resultsTable)
+                    self.resultsTable.reloadData()
+                }
+                catch {
+                    print(error)
+                }
             }
         }
     }

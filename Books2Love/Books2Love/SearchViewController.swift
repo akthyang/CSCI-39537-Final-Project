@@ -10,10 +10,10 @@ import UIKit
 class SearchViewController: UIViewController, UISearchBarDelegate {
 
     let searchController = UISearchController(searchResultsController: nil)
-    let sections = ["Books", "Lightnovels"]
+    let sections = ["Books", "Manga"]
     
     var books = [Book]()
-    var lightnovels = [Book]()
+    var manga = [Manga]()
     var keyword = ""
     
     // displays the list of results from search
@@ -50,6 +50,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                     
                     let books = try await BooksAPI.shared.search(keyword: keyword)
                     self.books = books
+                    let manga = try await MangaAPI.shared.search(keyword: keyword)
+                    self.manga = manga
                     
                     // removes loading page once table has loaded
                     self.navigationController?.popViewController(animated: false)
@@ -84,7 +86,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             heading.text = sections[section]
             return heading
         }
-        else if (section == 1 && lightnovels.count > 0) {
+        else if (section == 1 && manga.count > 0) {
             heading.text = sections[section]
             return heading
         }
@@ -103,46 +105,71 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if (section == 0) {
             return books.count
         }
-        return lightnovels.count
+        else if (section == 1) {
+            return manga.count
+        }
+        return 0
     }
     
     // MARK: Code for each cell
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SearchTableViewCell(style: .default, reuseIdentifier: "searchCell")
-        var book = books[indexPath.row]
-        // changes value of book if section changes
-        if (indexPath.section == 1 && lightnovels.count > 0) {
-            book = lightnovels[indexPath.row]
-        }
-        cell.bookTitle.text = book.volumeInfo.title
-        // add all the authors if provided
-        if (book.volumeInfo.authors?.count ?? 0 > 0) {
-            cell.authors.text = book.volumeInfo.authors?.first
-            if (book.volumeInfo.authors?.count ?? 0 > 1) {
-                var i = 1
-                while (i < book.volumeInfo.authors?.count ?? 0) {
-                    cell.authors.text = cell.authors.text! + ", " + (book.volumeInfo.authors?[i])!
-                    i = i + 1
+        if (indexPath.section == 0) {
+            var book = books[indexPath.row]
+            cell.bookTitle.text = book.volumeInfo.title
+            // add all the authors if provided
+            if (book.volumeInfo.authors?.count ?? 0 > 0) {
+                cell.authors.text = book.volumeInfo.authors?.first
+                if (book.volumeInfo.authors?.count ?? 0 > 1) {
+                    var i = 1
+                    while (i < book.volumeInfo.authors?.count ?? 0) {
+                        cell.authors.text = cell.authors.text! + ", " + (book.volumeInfo.authors?[i])!
+                        i = i + 1
+                    }
                 }
             }
+            // If there is no author listed
+            else {
+                cell.authors.text = "Unknown"
+            }
         }
-        // If there is no author listed
         else {
-            cell.authors.text = "Unknown"
+            let manga = manga[indexPath.row]
+            cell.bookTitle.text = manga.attributes.canonicalTitle
+            if (manga.authors?.count ?? 0 > 0) {
+                cell.authors.text = manga.authors?.first
+                if (manga.authors?.count ?? 0 > 1) {
+                    var i = 1
+                    while (i < manga.authors?.count ?? 0) {
+                        cell.authors.text = cell.authors.text! + ", " + (manga.authors?[i])!
+                        i = i + 1
+                    }
+                }
+            }
+            // If there is no author listed
+            else {
+                cell.authors.text = "Unknown"
+            }
+            
         }
         
         return cell
     }
     
     // MARK: changes view when a cell is selected to display the book's details
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var book = books[indexPath.row]
-        if (indexPath.section == 1 && lightnovels.count > 0) {
-            book = lightnovels[indexPath.row]
+        if (indexPath.section == 0) {
+            var book = books[indexPath.row]
+            let detailsViewCountroller = BookDetailsViewController(book: book)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
         }
-        let detailsViewCountroller = BookDetailsViewController(book: book)
-        navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        else {
+            let manga = manga[indexPath.row]
+            let detailsViewCountroller = MangaDetailsViewController(manga: manga)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        }
     }
     
     func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

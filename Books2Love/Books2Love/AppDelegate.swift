@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return self.restrictRotation
     }
     
-    // MARK: tries to make the tabs of tabbar load faster
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

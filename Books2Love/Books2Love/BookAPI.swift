@@ -60,7 +60,16 @@ struct BooksAPI {
     func callGoogleBooksAPI(url: String) async throws -> GoogleBookResponse {
         let url = URL(string: url)!
         let urlRequest = URLRequest(url: url)
-        let (data, _) = try await urlSession.data(for: urlRequest)
+        let (data, response) = try await urlSession.data(for: urlRequest)
+        
+        // error handling
+        guard let response = response as? HTTPURLResponse else {
+            throw BookAPIError.requestFailed(message: "Response is not HTTPURLResponse")
+        }
+        guard 200...209 ~= response.statusCode else {
+            throw BookAPIError.requestFailed(message: "Status code \(response.statusCode) is not 2xx")
+        }
+        
         let items = try JSONDecoder().decode(GoogleBookResponse.self, from: data)
         return items
     }

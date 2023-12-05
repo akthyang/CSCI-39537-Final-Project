@@ -69,6 +69,12 @@ struct MangaAPI {
             url = URL(string: relations.data[i].relationships.person.links.related)!
             urlRequest = URLRequest(url: url)
             let (data, _) = try await urlSession.data(for: urlRequest)
+            
+            // error handling
+            guard 200...209 ~= response.statusCode else {
+                throw MangaAPIError.requestFailed(message: "Status code \(response.statusCode) is not 2xx")
+            }
+            
             let persons = try JSONDecoder().decode(AuthorData.self, from: data)
             authors.append(persons.data.attributes.name)
             i  = i + 1
@@ -76,7 +82,13 @@ struct MangaAPI {
         var newManga = manga
         newManga.authors = authors
         return newManga
-        
+    }
+    
+    // MARK: search function
+    func search(keyword: String) async throws -> [Manga] {
+        let items = try await callMangaAPI(url: "https://kitsu.io/api/edge/manga?filter[text]=\(keyword)")
+        let mangaInfo = items.data!
+        return mangaInfo
     }
     
     // MARK: helper function to call Kitsu API

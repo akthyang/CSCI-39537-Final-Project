@@ -97,10 +97,10 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return ((manga.attributes.abbreviatedTitles?.count ?? 0) + 1)
         }
         else if (section == 2) {
-            return manga.authors?.count ?? 1
+            return ((manga.authors?.count ?? 0) + 1)
         }
         else if (section == 3) {
-            return manga.genres?.count ?? 1
+            return ((manga.genres?.count ?? 0) + 1)
         }
         return 1
     }
@@ -153,13 +153,16 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 else if (manga.attributes.titles.zh_cn != nil) {
                     cell.textLabel?.text = manga.attributes.titles.zh_cn
                 }
+                else if (manga.attributes.titles.ko_kr != nil) {
+                    cell.textLabel?.text = manga.attributes.titles.ko_kr
+                }
                 else {
                     cell.textLabel?.text = manga.attributes.titles.en
                 }
             }
         }
         else if (indexPath.section == 2) {
-            if (indexPath.row < manga.authors?.count ?? 0) {
+            if (manga.authors?.count ?? 0 > indexPath.row) {
                 cell.textLabel?.text = manga.authors?[indexPath.row]
             }
             else {
@@ -167,7 +170,7 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         else if (indexPath.section == 3) {
-            if (indexPath.row < manga.genres?.count ?? 0) {
+            if (manga.genres?.count ?? 0 > indexPath.row) {
                 cell.textLabel?.text = manga.genres?[indexPath.row]
             }
             else {
@@ -178,11 +181,11 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             cell.textLabel?.text = manga.attributes.status.capitalized
         }
         else if (indexPath.section == 5) {
-            if (manga.attributes.averageRating != nil) {
-                cell.textLabel?.text = manga.attributes.averageRating
+            if (manga.attributes.averageRating == nil) {
+                cell.textLabel?.text = "Unknown"
             }
             else {
-                cell.textLabel?.text = "Unknown"
+                cell.textLabel?.text = manga.attributes.averageRating
             }
         }
         else {

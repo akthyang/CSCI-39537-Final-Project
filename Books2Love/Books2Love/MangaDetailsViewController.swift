@@ -44,6 +44,7 @@ class MangaDetailsViewController: UIViewController {
 }
 
 // MARK: TableView Delegate and Data Source
+
 extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: header of each section
@@ -97,10 +98,16 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return ((manga.attributes.abbreviatedTitles?.count ?? 0) + 1)
         }
         else if (section == 2) {
-            return ((manga.authors?.count ?? 0) + 1)
+            if (manga.authors?.count == 0) {
+                return 1
+            }
+            return manga.authors!.count
         }
         else if (section == 3) {
-            return ((manga.genres?.count ?? 0) + 1)
+            if (manga.genres?.count == 0) {
+                return 1
+            }
+            return manga.genres!.count
         }
         return 1
     }

@@ -25,6 +25,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         return resultsTable
     }()
     
+    lazy var heading: UILabel = {
+        let heading = UILabel()
+        heading.textColor = .black
+        heading.textAlignment = .center
+        heading.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
+        heading.font = .systemFont(ofSize: 25)
+        heading.numberOfLines = 0
+        heading.lineBreakMode = .byWordWrapping
+        return heading
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,13 +86,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: code for each section
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let heading = UILabel()
-        heading.textColor = .black
-        heading.textAlignment = .center
-        heading.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
-        heading.font = .systemFont(ofSize: 25)
-        heading.numberOfLines = 0
-        heading.lineBreakMode = .byWordWrapping
         if (section == 0 && books.count > 0) {
             heading.text = sections[section]
             return heading

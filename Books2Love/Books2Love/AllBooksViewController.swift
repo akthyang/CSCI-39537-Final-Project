@@ -59,6 +59,7 @@ class AllBooksViewController: UIViewController {
     }
     
     // MARK: makes sure table remains in the frame of the phone
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         AllBooksTableView.frame = view.bounds
@@ -67,6 +68,7 @@ class AllBooksViewController: UIViewController {
 
 
 // MARK: TableView Delegate and Data Source
+
 extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: code for the header of each section
@@ -132,6 +134,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: changes view when a cell is selected to display the book's details
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0 || indexPath.section == 1) {
             var book = books[indexPath.row]
@@ -154,6 +157,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: helper function to remove HTML tags
     // Source Code: https://www.appsloveworld.com/swift/100/426/how-to-remove-html-tags-from-received-json-data-that-is-shown-in-swiftuis-list-v
+    
     func removeHTMLTags(str: String) -> AttributedString {
         if let theData = str.data(using: .utf16) {
             do {

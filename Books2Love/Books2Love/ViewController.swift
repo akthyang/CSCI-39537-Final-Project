@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         // setting CGRect will allow us to format w/o using constraint
         // not set up for rotating
         welcome.frame = CGRect(x: 103, y: 126, width: 194, height: 35)
+        welcome.font = UIFont.preferredFont(forTextStyle: .title2)
         feeling.frame = CGRect(x: 41, y: 200, width: 319, height: 30)
         happy.frame = CGRect(x: 112, y: 270, width: 173, height: 126)
         hLabel.frame = CGRect(x: 171, y: 387, width: 50, height: 21)

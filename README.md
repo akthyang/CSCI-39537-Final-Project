@@ -51,6 +51,13 @@ https://webnovel.p.rapidapi.com/novel/\(novel.id)/\(chapter.url!)
 
 ### Demo
 
+#### Launch Screen
+<img src="Launch.png" alt="Launch Screen of app" width="160px" height="300px">
+Launch Screen of app
+
+**Limitations:**
+Lacking in style
+
 #### First Page
 <img src="Emotion.png" alt="This is first page that allows users to choose an emotion and a book will be recommended based on the emotion chosen" width="160px" height="300px">
 This is first page that allows users to choose an emotion and a book will be recommended based on the emotion chosen

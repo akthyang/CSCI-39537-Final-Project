@@ -11,9 +11,6 @@
 		01109DF72B1D3E82002A8F70 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DF62B1D3E82002A8F70 /* LoadingViewController.swift */; };
 		01109DFF2B1ED8DD002A8F70 /* MangaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */; };
 		01109E012B1ED8F8002A8F70 /* MangaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */; };
-		01187C542B27FD6500A9FCDD /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01187C532B27FD6500A9FCDD /* ChaptersViewController.swift */; };
-		01187C562B27FD7400A9FCDD /* LightNovelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01187C552B27FD7400A9FCDD /* LightNovelAPI.swift */; };
-		01187C582B27FD9A00A9FCDD /* NovelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01187C572B27FD9A00A9FCDD /* NovelDetailsViewController.swift */; };
 		0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE322B1BA558008AFFFF /* AppDelegate.swift */; };
 		0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE342B1BA558008AFFFF /* SceneDelegate.swift */; };
 		0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE362B1BA558008AFFFF /* ViewController.swift */; };
@@ -23,6 +20,9 @@
 		0134AE4A2B1BA561008AFFFF /* Books2LoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE492B1BA561008AFFFF /* Books2LoveTests.swift */; };
 		0134AE542B1BA561008AFFFF /* Books2LoveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */; };
 		0134AE562B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */; };
+		013E36302B28156F00C136BE /* LightNovelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E362F2B28156F00C136BE /* LightNovelAPI.swift */; };
+		013E36322B28158600C136BE /* NovelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E36312B28158600C136BE /* NovelDetailsViewController.swift */; };
+		013E36342B28159100C136BE /* ChaptersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E36332B28159100C136BE /* ChaptersViewController.swift */; };
 		01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */; };
 		01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */; };
 		01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */; };
@@ -55,9 +55,6 @@
 		01109DF62B1D3E82002A8F70 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaAPI.swift; sourceTree = "<group>"; };
 		01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDetailsViewController.swift; sourceTree = "<group>"; };
-		01187C532B27FD6500A9FCDD /* ChaptersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChaptersViewController.swift; path = ../../../../Downloads/Books2Love/Books2Love/ChaptersViewController.swift; sourceTree = "<group>"; };
-		01187C552B27FD7400A9FCDD /* LightNovelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightNovelAPI.swift; path = ../../../../Downloads/Books2Love/Books2Love/LightNovelAPI.swift; sourceTree = "<group>"; };
-		01187C572B27FD9A00A9FCDD /* NovelDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NovelDetailsViewController.swift; path = ../../../../Downloads/Books2Love/Books2Love/NovelDetailsViewController.swift; sourceTree = "<group>"; };
 		0134AE2F2B1BA558008AFFFF /* Books2Love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books2Love.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0134AE322B1BA558008AFFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0134AE342B1BA558008AFFFF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +68,9 @@
 		0134AE4F2B1BA561008AFFFF /* Books2LoveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Books2LoveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0134AE532B1BA561008AFFFF /* Books2LoveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITests.swift; sourceTree = "<group>"; };
 		0134AE552B1BA561008AFFFF /* Books2LoveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books2LoveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		013E362F2B28156F00C136BE /* LightNovelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightNovelAPI.swift; sourceTree = "<group>"; };
+		013E36312B28158600C136BE /* NovelDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelDetailsViewController.swift; sourceTree = "<group>"; };
+		013E36332B28159100C136BE /* ChaptersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaptersViewController.swift; sourceTree = "<group>"; };
 		01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 		01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksViewController.swift; sourceTree = "<group>"; };
 		01DEFCC02B1BB40A0099DDB1 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,12 +133,12 @@
 				0134AE342B1BA558008AFFFF /* SceneDelegate.swift */,
 				01DEFCBC2B1BB1370099DDB1 /* BookAPI.swift */,
 				01109DFE2B1ED8DD002A8F70 /* MangaAPI.swift */,
-				01187C552B27FD7400A9FCDD /* LightNovelAPI.swift */,
+				013E362F2B28156F00C136BE /* LightNovelAPI.swift */,
 				0134AE362B1BA558008AFFFF /* ViewController.swift */,
 				01DEFCC42B1BBA370099DDB1 /* BookDetailsViewController.swift */,
 				01109E002B1ED8F8002A8F70 /* MangaDetailsViewController.swift */,
-				01187C572B27FD9A00A9FCDD /* NovelDetailsViewController.swift */,
-				01187C532B27FD6500A9FCDD /* ChaptersViewController.swift */,
+				013E36312B28158600C136BE /* NovelDetailsViewController.swift */,
+				013E36332B28159100C136BE /* ChaptersViewController.swift */,
 				01F6D3282B1C0CB2008B1AD2 /* BoDViewController.swift */,
 				01DEFCBE2B1BB3220099DDB1 /* AllBooksViewController.swift */,
 				01F6D32A2B1C24F9008B1AD2 /* SearchViewController.swift */,
@@ -303,22 +303,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01187C542B27FD6500A9FCDD /* ChaptersViewController.swift in Sources */,
 				01109E012B1ED8F8002A8F70 /* MangaDetailsViewController.swift in Sources */,
 				01DEFCC12B1BB40A0099DDB1 /* BooksTableViewCell.swift in Sources */,
 				01F6D32B2B1C24F9008B1AD2 /* SearchViewController.swift in Sources */,
 				0134AE372B1BA558008AFFFF /* ViewController.swift in Sources */,
-				01187C562B27FD7400A9FCDD /* LightNovelAPI.swift in Sources */,
 				01DEFCC52B1BBA370099DDB1 /* BookDetailsViewController.swift in Sources */,
 				01DEFCC32B1BB5160099DDB1 /* UIImageView+Extension.swift in Sources */,
 				01109DFF2B1ED8DD002A8F70 /* MangaAPI.swift in Sources */,
+				013E36342B28159100C136BE /* ChaptersViewController.swift in Sources */,
 				01DEFCBD2B1BB1370099DDB1 /* BookAPI.swift in Sources */,
 				01DEFCBF2B1BB3220099DDB1 /* AllBooksViewController.swift in Sources */,
 				0134AE332B1BA558008AFFFF /* AppDelegate.swift in Sources */,
-				01187C582B27FD9A00A9FCDD /* NovelDetailsViewController.swift in Sources */,
 				0134AE352B1BA558008AFFFF /* SceneDelegate.swift in Sources */,
 				01109DED2B1D0F2F002A8F70 /* SearchTableViewCell.swift in Sources */,
 				01F6D3292B1C0CB2008B1AD2 /* BoDViewController.swift in Sources */,
+				013E36302B28156F00C136BE /* LightNovelAPI.swift in Sources */,
+				013E36322B28158600C136BE /* NovelDetailsViewController.swift in Sources */,
 				01109DF72B1D3E82002A8F70 /* LoadingViewController.swift in Sources */,
 				01DEFCC72B1BBC980099DDB1 /* CoverTableViewCell.swift in Sources */,
 			);

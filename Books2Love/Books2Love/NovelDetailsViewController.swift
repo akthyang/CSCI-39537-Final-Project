@@ -129,8 +129,7 @@ extension NovelDetailsViewController: UITableViewDelegate, UITableViewDataSource
             cell.textLabel?.text = novel.novelInfo?.novel.genre
         }
         else if (indexPath.section == 3) {
-            novel.novelInfo?.novel.status = (novel.novelInfo?.novel.status.replacingOccurrences(of: "：", with: ""))!
-            cell.textLabel?.text = novel.novelInfo?.novel.status
+            cell.textLabel?.text = novel.novelInfo?.novel.status.replacingOccurrences(of: "：", with: "")
         }
         else if (indexPath.section == 4) {
             cell.textLabel?.text = novel.novelInfo?.novel.summary

@@ -195,6 +195,7 @@ struct Titles: Codable {
     let ja_jp: String?
     let ko_kr: String?
     let zh_cn: String?
+    let th_th: String?
 }
 
 struct Relationships: Codable {

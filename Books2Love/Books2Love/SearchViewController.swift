@@ -10,9 +10,10 @@ import UIKit
 class SearchViewController: UIViewController, UISearchBarDelegate {
 
     let searchController = UISearchController(searchResultsController: nil)
-    let sections = ["Books", "Manga"]
+    let sections = ["Books", "LightNovels", "Manga"]
     
     var books = [Book]()
+    var novel = [Novels]()
     var manga = [Manga]()
     var keyword = ""
     
@@ -23,17 +24,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         resultsTable.delegate = self
         resultsTable.frame = view.bounds
         return resultsTable
-    }()
-    
-    lazy var heading: UILabel = {
-        let heading = UILabel()
-        heading.textColor = .black
-        heading.textAlignment = .center
-        heading.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 0.95)
-        heading.font = .systemFont(ofSize: 25)
-        heading.numberOfLines = 0
-        heading.lineBreakMode = .byWordWrapping
-        return heading
     }()
     
     override func viewDidLoad() {
@@ -63,6 +53,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                     self.books = books
                     let manga = try await MangaAPI.shared.search(keyword: keyword)
                     self.manga = manga
+                    let novel = try await LightNovelAPI.shared.search(keyword: keyword)
+                    self.novel = novel
+                    print(novel.count)
                     
                     // removes loading page once table has loaded
                     self.navigationController?.popViewController(animated: false)
@@ -85,42 +78,37 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: code for each section
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (section == 0 && books.count > 0) {
-            heading.text = sections[section]
-            return heading
-        }
-        else if (section == 1 && manga.count > 0) {
-            heading.text = sections[section]
-            return heading
-        }
-        return nil
+    func tableView(_ resultsTable: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ resultsTable: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+    func numberOfSections(in resultsTable: UITableView) -> Int {
+        return 3
     }
     
-    func tableView(_ AllBooksTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ resultsTable: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return books.count
         }
-        else if (section == 1) {
+        else if (section == 1 && novel.count > 0) {
+            return novel.count
+        }
+        else if (section == 2 && manga.count > 0) {
             return manga.count
         }
-        return 0
+        return 1
     }
     
     // MARK: Code for each cell
     
-    func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ resultsTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SearchTableViewCell(style: .default, reuseIdentifier: "searchCell")
         if (indexPath.section == 0) {
-            var book = books[indexPath.row]
+            let book = books[indexPath.row]
             cell.bookTitle.text = book.volumeInfo.title
             // add all the authors if provided
             if (book.volumeInfo.authors?.count ?? 0 > 0) {
@@ -138,24 +126,40 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.authors.text = "Unknown"
             }
         }
+        else if (indexPath.section == 1) {
+            if (novel.count > 0) {
+                let novel = novel[indexPath.row]
+                cell.bookTitle.text = novel.title
+                cell.authors.text = novel.novelInfo?.novel.author.replacingOccurrences(of: "：", with: "") ?? "Unknown"
+            }
+            else {
+                cell.textLabel?.text = "None available."
+                cell.selectionStyle = .none
+            }
+        }
         else {
-            let manga = manga[indexPath.row]
-            cell.bookTitle.text = manga.attributes.canonicalTitle
-            if (manga.authors?.count ?? 0 > 0) {
-                cell.authors.text = manga.authors?.first
-                if (manga.authors?.count ?? 0 > 1) {
-                    var i = 1
-                    while (i < manga.authors?.count ?? 0) {
-                        cell.authors.text = cell.authors.text! + ", " + (manga.authors?[i])!
-                        i = i + 1
+            if (manga.count > 0) {
+                let manga = manga[indexPath.row]
+                cell.bookTitle.text = manga.attributes.canonicalTitle
+                if (manga.authors?.count ?? 0 > 0) {
+                    cell.authors.text = manga.authors?.first
+                    if (manga.authors?.count ?? 0 > 1) {
+                        var i = 1
+                        while (i < manga.authors?.count ?? 0) {
+                            cell.authors.text = cell.authors.text! + ", " + (manga.authors?[i])!
+                            i = i + 1
+                        }
                     }
                 }
+                // If there is no author listed
+                else {
+                    cell.authors.text = "Unknown"
+                }
             }
-            // If there is no author listed
             else {
-                cell.authors.text = "Unknown"
+                cell.textLabel?.text = "None available."
+                cell.selectionStyle = .none
             }
-            
         }
         
         return cell
@@ -163,20 +167,25 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: changes view when a cell is selected to display the book's details
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ resultsTable: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 0) {
-            var book = books[indexPath.row]
+            let book = books[indexPath.row]
             let detailsViewCountroller = BookDetailsViewController(book: book)
             navigationController?.pushViewController(detailsViewCountroller, animated: true)
         }
-        else {
+        else if (indexPath.section == 1 && novel.count > 0) {
+            let novel = novel[indexPath.row]
+            let detailsViewCountroller = NovelDetailsViewController(novel: novel)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        }
+        else if (indexPath.section == 2 && manga.count > 0) {
             let manga = manga[indexPath.row]
             let detailsViewCountroller = MangaDetailsViewController(manga: manga)
             navigationController?.pushViewController(detailsViewCountroller, animated: true)
         }
     }
     
-    func tableView(_ AllBooksTableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ resultsTable: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     

@@ -163,6 +163,9 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 else if (manga.attributes.titles.ko_kr != nil) {
                     cell.textLabel?.text = manga.attributes.titles.ko_kr
                 }
+                else if (manga.attributes.titles.th_th != nil) {
+                    cell.textLabel?.text = manga.attributes.titles.th_th
+                }
                 else {
                     cell.textLabel?.text = manga.attributes.titles.en
                 }
@@ -196,7 +199,12 @@ extension MangaDetailsViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         else {
-            cell.textLabel?.text = manga.attributes.description ?? "No description available"
+            if (manga.attributes.description != nil || manga.attributes.description == "\n\n") {
+                cell.textLabel?.text = manga.attributes.description
+            }
+            else {
+                cell.textLabel?.text = "No description available"
+            }
         }
         return cell
     }

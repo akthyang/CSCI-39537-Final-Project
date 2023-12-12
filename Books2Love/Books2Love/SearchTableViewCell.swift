@@ -2,8 +2,8 @@
 //  SearchTableViewCell.swift
 //  Books2Love
 //
-//  Created by Christine Yang on 12/3/23.
-//
+//  Created by Alicia Yang on 12/3/23.
+//  MARK: the custom cell for Search results
 
 import UIKit
 

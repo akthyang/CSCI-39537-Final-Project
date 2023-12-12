@@ -25,7 +25,9 @@ class ViewController: UIViewController {
             
         // create their labels and the header
         let welcome = Label(title: "Welcome Back!")
+        welcome.font = UIFont.preferredFont(forTextStyle: .title2)
         let feeling = Label(title: "How are you feeling today?")
+        feeling.font = UIFont.preferredFont(forTextStyle: .title3)
         let hLabel = Label(title: "Happy")
         let sLabel = Label(title: "Sad")
         let bLabel = Label(title: "Meh")

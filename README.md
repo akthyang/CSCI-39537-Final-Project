@@ -1,6 +1,9 @@
 # CSCI-39537-Final-Project
 I am creating an iOS project that allows users to browse books from all over the world
 
+**Limitations:**
+Can be a little laggy and slow when it is first ran and may even crash. Need to be ran a few times before issue goes away
+
 ## APIs Used
 
 ### [Google Books API](https://developers.google.com/books/docs/v1/using)
@@ -100,8 +103,11 @@ Displays the content of a chapter of the web novel, allowing user to read it
 Example of the details page for a manga
 
 **Limitations:**
-Some sections may have blank cells as not all possible combinations of other titles, genre, and authors was tested
+Some sections may have blank cells as not all possible combinations of other titles, genre, and authors were tested
 
 #### Loading Page
 <img src="LoadingPage.png" alt="Shows a loading page" width="160px" height="300px">
 Shows a loading page as data may take some time to show
+
+**Limitations:**
+The text that shows when the page is loading goes away after user changes tab when page is still loading

@@ -52,7 +52,7 @@ https://webnovel.p.rapidapi.com/novel/\(novel.id)/\(chapter.url!)
 ### Demo
 
 #### Launch Screen
-<img src="Emotion.png" alt="Launch Screen of app" width="160px" height="300px">
+<img src="Launch.png" alt="Launch Screen of app" width="160px" height="300px">
 Launch Screen of app
 
 **Limitations:**

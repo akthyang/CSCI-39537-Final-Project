@@ -14,8 +14,34 @@
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BKS2♡" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rP-5H-Sef">
+                                <rect key="frame" x="125" y="353" width="142" height="177"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="By Alicia Yang" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHk-hY-ey5">
+                                <rect key="frame" x="125" y="733" width="142" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="5c2-Ed-umv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Et2-vG-1tf"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Et2-vG-1tf" firstAttribute="bottom" secondItem="ZHk-hY-ey5" secondAttribute="bottom" constant="38" id="RH6-le-CSV"/>
+                            <constraint firstItem="1rP-5H-Sef" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Tpi-vd-tOa"/>
+                            <constraint firstItem="Et2-vG-1tf" firstAttribute="bottom" secondItem="1rP-5H-Sef" secondAttribute="bottom" constant="288" id="U4H-H0-EZd"/>
+                            <constraint firstItem="1rP-5H-Sef" firstAttribute="leading" secondItem="Et2-vG-1tf" secondAttribute="leading" constant="125" id="ZcQ-Dw-3gL"/>
+                            <constraint firstItem="ZHk-hY-ey5" firstAttribute="leading" secondItem="1rP-5H-Sef" secondAttribute="leading" id="dsX-h2-tA6"/>
+                            <constraint firstItem="1rP-5H-Sef" firstAttribute="top" secondItem="Et2-vG-1tf" secondAttribute="top" constant="294" id="tuA-hZ-Faj"/>
+                            <constraint firstItem="ZHk-hY-ey5" firstAttribute="trailing" secondItem="1rP-5H-Sef" secondAttribute="trailing" id="v4v-Bx-6np"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

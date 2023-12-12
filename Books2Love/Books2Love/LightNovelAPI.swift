@@ -67,10 +67,10 @@ struct LightNovelAPI {
         var filterByTitle = allNovels.filter({$0.title.contains(keyword.lowercased())})
         print(filterByTitle)
         let count = filterByTitle.count
-        let filterByGenre = allNovels.filter({$0.novelInfo?.novel.genre.contains(keyword.lowercased()) ?? $0.title.contains(keyword)})
+        let filterBySummary = allNovels.filter({$0.novelInfo?.novel.summary.contains(keyword.lowercased()) ?? $0.title.contains(keyword)})
         var i = 0
-        while (i < filterByGenre.count) {
-            filterByTitle.append(filterByGenre[i])
+        while (i < filterBySummary.count) {
+            filterByTitle.append(filterBySummary[i])
             i = i + 1
         }
         let filteredNovel = try await filterSearch(novel: filterByTitle, index: count)

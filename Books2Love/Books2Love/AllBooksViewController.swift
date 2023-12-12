@@ -11,7 +11,7 @@ class AllBooksViewController: UIViewController {
 
     let bookSections = ["Popular Young Adult Books", "Lightnovels", "Manga"]
     var books = [Book]()
-    var lightnovels = [Book]()
+    var lightnovels = [Novels]()
     var manga = [Manga]()
     
     lazy var AllBooksTableView: UITableView = {
@@ -35,14 +35,14 @@ class AllBooksViewController: UIViewController {
         // removes back button on top
         navigationController?.isNavigationBarHidden = true
         
-        // calls the GoogleBook API
+        // calls the APIs
         DispatchQueue.main.async {
             Task {
                 do {
                     let books = try await BooksAPI.shared.popularBooksWest()
                     self.books = books
-                    let lightnovels = try await BooksAPI.shared.lightNovels()
-                    self.lightnovels = lightnovels
+                    let novel = try await LightNovelAPI.shared.getNovels()
+                    self.lightnovels = novel
                     let manga = try await MangaAPI.shared.getManga()
                     self.manga = manga
                     self.AllBooksTableView.reloadData()
@@ -73,7 +73,7 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: code for the header of each section
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ AllBooksTableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let heading = UILabel()
         heading.textColor = .black
         heading.text = bookSections[section]
@@ -85,11 +85,11 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
         return heading
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ AllBooksTableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in AllBooksTableView: UITableView) -> Int {
         return bookSections.count
     }
     
@@ -101,12 +101,9 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ AllBooksTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = BooksTableViewCell(style: .default, reuseIdentifier: "bookCell")
-        var book = books[indexPath.row]
+        let book = books[indexPath.row]
         // changes value of book if section changes
-        if (indexPath.section == 0 || indexPath.section == 1) {
-            if (indexPath.section == 1) {
-                book = lightnovels[indexPath.row]
-            }
+        if (indexPath.section == 0) {
             // makes sure an image cover link exists
             let safeURL = book.volumeInfo.imageLinks?.thumbnail ?? ""
             if (safeURL != "") {
@@ -118,12 +115,26 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
             cell.bookTitle.text = book.volumeInfo.title
             cell.descript.text = String(removeHTMLTags(str: book.searchInfo?.textSnippet ?? "Opps. There is currently no short description available").characters)
         }
+        else if (indexPath.section == 1) {
+            let novel = lightnovels[indexPath.row]
+            // makes sure an image cover link exists
+            let safeURL = novel.novelInfo?.novel.cover ?? ""
+            if (safeURL != "") {
+                cell.thumbnail.loadImage(url: URL(string: safeURL)!)
+            }
+            else {
+                cell.thumbnail.image = UIImage(imageLiteralResourceName: "Noimage")
+            }
+            cell.bookTitle.text = novel.title.capitalized
+            cell.descript.text = novel.novelInfo?.novel.summary
+            cell.descript.numberOfLines = 6
+        }
         else {
             let manga = manga[indexPath.row]
             let safeURL = manga.attributes.posterImage.original
             cell.thumbnail.loadImage(url: URL(string: safeURL)!)
             cell.bookTitle.text = manga.attributes.canonicalTitle
-            if (manga.attributes.synopsis != nil) {
+            if (manga.attributes.synopsis != nil || manga.attributes.synopsis == "\n\n") {
                 cell.descript.text = manga.attributes.synopsis
             }
             else {
@@ -136,12 +147,14 @@ extension AllBooksViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: changes view when a cell is selected to display the book's details
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0 || indexPath.section == 1) {
-            var book = books[indexPath.row]
-            if (indexPath.section == 1) {
-                book = lightnovels[indexPath.row]
-            }
+        if (indexPath.section == 0) {
+            let book = books[indexPath.row]
             let detailsViewCountroller = BookDetailsViewController(book: book)
+            navigationController?.pushViewController(detailsViewCountroller, animated: true)
+        }
+        else if (indexPath.section == 1) {
+            let novel = lightnovels[indexPath.row]
+            let detailsViewCountroller = NovelDetailsViewController(novel: novel)
             navigationController?.pushViewController(detailsViewCountroller, animated: true)
         }
         else {

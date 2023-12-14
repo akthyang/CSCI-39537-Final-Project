@@ -20,7 +20,7 @@ struct LightNovelAPI {
     }
     
     let headers = [
-        "X-RapidAPI-Key": "94c41c68femsheda91ee6cfa6e94p1ba3bajsnb95b1b9d48b8",
+        "X-RapidAPI-Key": [Your Rapid API Key],
         "X-RapidAPI-Host": "webnovel.p.rapidapi.com"
     ]
 
